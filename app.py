@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 from datetime import timedelta, time, datetime
-import plotly.express as px
 from io import BytesIO
 
 
@@ -1052,3 +1051,4 @@ if st.session_state.run_assignment_clicked :
 
 
     st.success("✅ Assignment completed successfully!")            
+
