@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import timedelta, time, datetime
 from io import BytesIO
 
-
+base="dark"
 # =========================
 # Configuration & Helpers
 # =========================
@@ -1051,4 +1051,5 @@ if st.session_state.run_assignment_clicked :
 
 
     st.success("✅ Assignment completed successfully!")            
+
 
