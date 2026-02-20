@@ -190,7 +190,7 @@ if "assignment_completed" not in st.session_state:
 
 logo_link = "https://omsstats.wpenginepowered.com/wp-content/themes/orbit-media-bootstrap4/resources/images/logo.png"
 st.logo(logo_link, link="https://www.statsperform.com/")
-st.set_page_config(page_title="T13 Rota Assignment", layout='wide')
+st.set_page_config(page_title="T14 Rota Assignment", layout='wide')
 
 st.markdown(""" 
 <style>
@@ -1051,5 +1051,6 @@ if st.session_state.run_assignment_clicked :
 
 
     st.success("✅ Assignment completed successfully!")            
+
 
 
