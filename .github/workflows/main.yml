@@ -2,21 +2,24 @@ name: Deploy to EC2 (Streamlit)
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy (SSH -> git pull -> install deps -> restart service)
+      - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
           script: |
             set -e
+            whoami
+            hostname
             cd ${{ secrets.TARGET_DIR }}
             git pull
             /home/ubuntu/rota-schedule/venv/bin/pip install -r requirements.txt
