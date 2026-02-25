@@ -1,0 +1,24 @@
+name: Deploy to EC2 (Streamlit)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy (SSH -> git pull -> install deps -> restart service)
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            set -e
+            cd /home/ubuntu/rota-schedule
+            git pull
+            /home/ubuntu/rota-schedule/venv/bin/pip install -r requirements.txt
+            sudo systemctl restart streamlit
+            sudo systemctl status streamlit --no-pager
